@@ -16,7 +16,7 @@
                     <div class="breadcrumb-trail breadcrumbs">
                         <ul class="trail-items breadcrumb">
                             <li class="trail-item trail-begin">
-                                <a href="index.html">الرئيسية</a>
+                                <a href="{{route('home')}}">الرئيسية</a>
                             </li>
                             <li class="trail-item trail-end active">
                                 تسجيل
@@ -33,14 +33,14 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="login-item">
                                         <h5 class="title-login">قم بتسجيل الدخول إلى حسابك</h5>
-                                        <form class="login">
+                                        <form class="login" action="{{route('login')}}">
                                             <p class="form-row form-row-wide">
-                                                <label class="text">اسم المستخدم</label>
-                                                <input title="username" type="text" class="input-text">
+                                                <label class="text">البريد الالكتروني</label>
+                                                <input title="username" name="email" type="text" class="input-text">
                                             </p>
                                             <p class="form-row form-row-wide">
                                                 <label class="text">كلمة المرور</label>
-                                                <input title="password" type="password" class="input-text">
+                                                <input title="password" name="password" type="password" class="input-text">
                                             </p>
                                             <p class="lost_password">
 												<span class="inline">
