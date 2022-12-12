@@ -34,6 +34,7 @@
                                     <div class="login-item">
                                         <h5 class="title-login">قم بتسجيل الدخول إلى حسابك</h5>
                                         <form class="login" action="{{route('login')}}" method="post">
+                                            @csrf
                                             <p class="form-row form-row-wide">
                                                 <label class="text">البريد الالكتروني</label>
                                                 <input title="username" name="email" type="text" class="input-text">
