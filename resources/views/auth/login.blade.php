@@ -1,55 +1,93 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('website.master')
+@section('css')
+@endsection
+@section('title')
+    تسجيل الدخول
+@endsection
+@section('class_to')
+    inblog-page
+@endsection
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+    <div class="main-content main-content-login">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-trail breadcrumbs">
+                        <ul class="trail-items breadcrumb">
+                            <li class="trail-item trail-begin">
+                                <a href="index.html">الرئيسية</a>
+                            </li>
+                            <li class="trail-item trail-end active">
+                                تسجيل
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <div class="row">
+                <div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="site-main">
+                        <div class="customer_login">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="login-item">
+                                        <h5 class="title-login">قم بتسجيل الدخول إلى حسابك</h5>
+                                        <form class="login">
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">اسم المستخدم</label>
+                                                <input title="username" type="text" class="input-text">
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">كلمة المرور</label>
+                                                <input title="password" type="password" class="input-text">
+                                            </p>
+                                            <p class="lost_password">
+												<span class="inline">
+													<input type="checkbox" id="cb1">
+													<label for="cb1" class="label-text">تذكرنى</label>
+												</span>
+                                                <a href="#" class="forgot-pw">هل نسيت كلمة السر؟</a>
+                                            </p>
+                                            <p class="form-row">
+                                                <input type="submit" class="button-submit" value="تسجيل الدخول">
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="login-item">
+                                        <h5 class="title-login">سجل الان</h5>
+                                        <form class="register">
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">بريدك الالكتروني</label>
+                                                <input title="email" type="email" class="input-text">
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">اسم المستخدم</label>
+                                                <input title="name" type="text" class="input-text">
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">كلمة المرور</label>
+                                                <input title="pass" type="password" class="input-text">
+                                            </p>
+                                            <p class="form-row">
+												<span class="inline">
+													<input type="checkbox" id="cb2">
+													<label for="cb2" class="label-text">وأنا أوافق على<span>البنود و الظروف</span></label>
+												</span>
+                                            </p>
+                                            <p class="">
+                                                <input type="submit" class="button-submit" value="سجل الان">
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        </div>
+    </div>
+@endsection
