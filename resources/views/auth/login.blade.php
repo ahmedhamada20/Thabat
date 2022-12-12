@@ -33,7 +33,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="login-item">
                                         <h5 class="title-login">قم بتسجيل الدخول إلى حسابك</h5>
-                                        <form class="login" action="{{route('login')}}">
+                                        <form class="login" action="{{route('login')}}" method="post">
                                             <p class="form-row form-row-wide">
                                                 <label class="text">البريد الالكتروني</label>
                                                 <input title="username" name="email" type="text" class="input-text">
