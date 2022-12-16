@@ -10,7 +10,19 @@
 
                 <ul class="header-user-links">
                     <li>
-                        <a href="{{route('login')}}">تسجيل دخول أو إنشاء حساب</a>
+                        @guest
+                            <a href="{{route('login')}}">تسجيل دخول أو إنشاء حساب</a>
+                        @else
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a href="" :href="route('logout')"
+                                   onclick="event.preventDefault();
+                                                this.closest('form').submit();">تسجيل الخروج</a>
+
+                            </form>
+                        @endguest
+
                     </li>
                 </ul>
             </div>

@@ -59,22 +59,27 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="login-item">
                                         <h5 class="title-login">سجل الان</h5>
-                                        <form class="register">
+                                        <form class="register" action="{{route('register')}}" method="post" autocomplete="off">
+                                            @csrf
                                             <p class="form-row form-row-wide">
                                                 <label class="text">بريدك الالكتروني</label>
-                                                <input title="email" type="email" class="input-text">
+                                                <input title="email" name="email" type="email" class="input-text">
                                             </p>
                                             <p class="form-row form-row-wide">
                                                 <label class="text">اسم المستخدم</label>
-                                                <input title="name" type="text" class="input-text">
+                                                <input title="name" name="name" type="text" class="input-text">
                                             </p>
                                             <p class="form-row form-row-wide">
                                                 <label class="text">كلمة المرور</label>
-                                                <input title="pass" type="password" class="input-text">
+                                                <input title="pass" name="password" type="password" class="input-text">
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label class="text">تأكيد كلمه المرور</label>
+                                                <input title="pass" name="password_confirmation" type="password" class="input-text">
                                             </p>
                                             <p class="form-row">
 												<span class="inline">
-													<input type="checkbox" id="cb2">
+													<input type="checkbox" id="cb2" required>
 													<label for="cb2" class="label-text">وأنا أوافق على<span>البنود و الظروف</span></label>
 												</span>
                                             </p>
