@@ -14,8 +14,8 @@ class CreateTypeProductTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->enum('type',['seeds','g','kg','l','ml','m','cm','pcs','set','mlm']);
-        
+            $table->enum('type',['seeds','g','kg','l','ml','m','cm','pcs','set','mlm'])->nullable();
+
         });
     }
 
@@ -28,7 +28,7 @@ class CreateTypeProductTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->dropColumn('type');
-           
+
         });
     }
 }

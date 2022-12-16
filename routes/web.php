@@ -19,15 +19,28 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php';
 
 ############################  Start Routes WebSite ##############################
-Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/',[HomeController::class,'index'])->name('website');
 Route::get('shop',[HomeController::class,'shop'])->name('shop');
 Route::get('listProducts',[HomeController::class,'listproducts'])->name('listproducts');
 Route::get('contact',[HomeController::class,'contact'])->name('contact');
 Route::get('about',[HomeController::class,'about'])->name('about');
-Route::get('productDetails',[HomeController::class,'details'])->name('productDetails');
+Route::get('productDetails/{id}',[HomeController::class,'details'])->name('productDetails');
 
 
 ############################## End Routes WebSite  ##############################
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::post('addToCart', [HomeController::class, 'addToCart'])->name('addToCart');
+    Route::post('deletedCart', [HomeController::class, 'deletedCart'])->name('deletedCart');
+    Route::get('checkOut', [HomeController::class, 'checkOut'])->name('checkOut');
+    Route::get('deletedCartShopping/{id}', [HomeController::class, 'deletedCartShopping'])->name('deletedCartShopping');
+    Route::get('shoppingCart', [HomeController::class, 'shoppingCart'])->name('shoppingCart');
+    Route::get('cart', [HomeController::class, 'cart'])->name('show_cart');
+    Route::post('check_coupon', [HomeController::class, 'check_coupon'])->name('check_coupon');
+    Route::post('order_paymaents', [HomeController::class, 'order_paymaents'])->name('order_paymaents');
+});
 
 
 Route::get('/dashboard', function () {

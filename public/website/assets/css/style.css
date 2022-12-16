@@ -1906,7 +1906,7 @@ table tr:last-child td, table tr:last-child th {
 	color: #fff;
 	font-weight: 600;
 	font-size: 14px;
-	
+
 	opacity: 0;
 	visibility: hidden;
 	z-index: 1001;
@@ -2801,7 +2801,7 @@ blockquote .author .desc {
 	background-position: left center;
 	background-color: #ffffff;
 	background-size: cover;
-	
+
 }
 .kt-popup-newsletter.style-1 .image-newsletter {
 	width: 38.9610%;
@@ -3568,7 +3568,7 @@ blockquote .author .desc {
 }
 .breadcrumb a {
 	color: #888888;
-	
+
 }
 .breadcrumb > .active {
 	color: #222;
@@ -4862,7 +4862,7 @@ ul.list-products {
 .cart-form .shop_table .product-quantity .quantity {
 	display: block;
 	border: 1px solid #f1f1f1;
-	
+
 	padding: 0 6px;
 	width: 75px;
 	text-align: center;
@@ -5473,7 +5473,7 @@ ul.list-products {
 	text-align: center;
 	line-height: 38px;
 	z-index: 32;
-	
+
 }
 .btn-zoom.open_qv:hover {
 	color: #ffffff;
@@ -6286,7 +6286,7 @@ ul.list-products {
 	right: -40px;
 	z-index: 33;
 	background: #ffffff;
-	
+
 	opacity: 0;
 	visibility: hidden;
 }
@@ -6632,7 +6632,7 @@ ul.list-products {
 }
 .stelina-product.style2 .product-list-owl .slick-dots .slick-active {
 	background: #666666;
-	
+
 }
 .stelina-product.style2 .product-list-owl .slick-dots li:first-child {
 	border-bottom-left-radius: 5px;
@@ -6647,7 +6647,6 @@ ul.list-products {
 	padding: 0;
 }
 .slider-item.style4 .slider-inner {
-	background-image: url(../product_images/slider-thumb-full-1.jpg);
 	background-position: center;
 	background-size: cover;
 	border-radius: 0;
@@ -7935,7 +7934,7 @@ body.vertical-menu-open .vertical-menu-overlay {
 	right: -20px;
 	z-index: 33;
 	background: #ffffff;
-	
+
 	opacity: 0;
 	visibility: hidden;
 }
@@ -8389,7 +8388,7 @@ body.vertical-menu-open .vertical-menu-overlay {
 	padding-top: 0;
 	padding-bottom: 0;
 	line-height: 39px;
-	
+
 	background: transparent;
 }
 .group-pinap .pinmap-buttom:hover .popup-pinmap, .group-pinap .pinmap-buttom:hover .popup-pinmap::before {
@@ -8703,7 +8702,7 @@ iframe {
 	/* background-size: cover; */
 }
 .item-banner.style9.type1 .inner {
-	background-image: url(../product_images/banner-home-71.jpg);
+	/*background-image: url(../product_images/banner-home-71.jpg);*/
 	background-size: cover;
 	background-position: center;
 }
@@ -9901,7 +9900,7 @@ iframe {
 	/*==========home 06=========*/
 	.header.style6 {
 		padding: 30px;
-		
+
 	}
 	.header.style6 .logo {
 		padding-bottom: 0;
@@ -10156,7 +10155,7 @@ iframe {
 	/*popup newletter*/
 	.kt-popup-newsletter {
 		display: none;
-		
+
 	}
 	/*===========home 04=========*/
 	.header.style4 .header-control {
@@ -11043,7 +11042,7 @@ iframe {
 .product-item.style-6 .loop-form-add-to-cart .button, .pinmap-buttom, .header-nav-wapper .vertical-wapper,
 .list-category .category-item:hover {
 	background-color: #ab8e66;
-	
+
 }
 .product-item .button:hover,
 input[type="text"]:focus,
@@ -11059,9 +11058,9 @@ select:focus, .sevice-box-content .sevice-button:hover, .widget_filter_size li.a
 .checkout-wrapp .group-button-payment .btn-credit-card, .payment-method-wrapp .button-control .btn-pay-now, .end-checkout .button, .btn-zoom.open_qv:hover,
 .attribute_size .list-size a.active, .attribute_size .list-size a:hover, .shopcart-description .actions .button-viewcart:hover,
 .product-item.style-6 .loop-form-add-to-cart .button {
-	
+
 	border-color: #fff !important;
-	
+
 }
 a:hover, a:focus, a:active,
 .product-item.style-2 ul li a:hover, .quantity .btn-number:hover, .header-user-form-tabs .tab-link li.active,
@@ -11074,7 +11073,7 @@ a:hover, a:focus, a:active,
 .tab-details-product .tab-link li.active a, .review_form .comment-form-review .stars a.active, .review_form .comment-form-review .stars a:hover,
 .related .slick-slider.nav-center > .slick-arrow:hover, .up-sells .slick-slider.nav-center > .slick-arrow:hover, .slider-item .button:hover, .slick-slider.nav-center > .slick-arrow:hover {
 	color: #ab8e66;
-	
+
 }
 .details-thumd .thumbnails_carousel .owl-item .active img {
 	border-color: #ab8e66;

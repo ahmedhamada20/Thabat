@@ -15,8 +15,8 @@ class ProductController extends Controller
     function __construct()
     {
         $this->middleware('permission:سليدر المنتجات', ['only' => ['index']]);
-        $this->middleware('permission:اضافه منتج', ['only' => ['create','store']]);
-        $this->middleware('permission:تعديل المنتج', ['only' => ['edit','update']]);
+        $this->middleware('permission:اضافه منتج', ['only' => ['create', 'store']]);
+        $this->middleware('permission:تعديل المنتج', ['only' => ['edit', 'update']]);
         $this->middleware('permission:حذف المنتج', ['only' => ['destroy']]);
     }
 
@@ -51,7 +51,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        if ($request->page_id == 3){
+        if ($request->page_id == 3) {
             // Insert Many Photos
             if ($request->hasfile('FilenameMany')) {
                 foreach ($request->file('FilenameMany') as $file) {
@@ -79,12 +79,12 @@ class ProductController extends Controller
             'disease' => 'required',
             'hybrid' => 'required',
 
-            
+
         ], [
             'name.required' => 'هذا الحقل مطلوب',
             'price.required' => 'هذا الحقل مطلوب',
             'quantity.required' => 'هذا الحقل مطلوب',
-         
+
             'days.required' => 'هذا الحقل مطلوب',
             'life_cycle.required' => 'هذا الحقل مطلوب',
             'disease.required' => 'هذا الحقل مطلوب',
@@ -103,13 +103,15 @@ class ProductController extends Controller
             'section_one' => $request->section_one,
             'section_two' => $request->section_two,
             'section_there' => $request->section_there,
-            'packet'=> $request->packet,
-            'stock'=> $request->stock,
-            'seeds_one'=> $request->seeds_one,
-            'seeds_two'=> $request->seeds_two,
-            'seeds_there'=> $request->seeds_there,
-            'type'=> $request->type,
-            'code_prodcut'=> $request->code_prodcut,
+            'packet' => $request->packet,
+            'stock' => $request->stock,
+            'seeds_one' => $request->seeds_one,
+            'seeds_two' => $request->seeds_two,
+            'seeds_there' => $request->seeds_there,
+            'type' => $request->type,
+            'code_prodcut' => $request->code_prodcut,
+            'discount' => $request->discount,
+            'type_product' => $request->type_product,
 
         ]);
 
@@ -186,16 +188,12 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
-      
-            'days' => 'required',
-            'life_cycle' => 'required',
-            'disease' => 'required',
-            'hybrid' => 'required',
+
         ], [
             'name.required' => 'هذا الحقل مطلوب',
             'price.required' => 'هذا الحقل مطلوب',
             'quantity.required' => 'هذا الحقل مطلوب',
-        
+
             'days.required' => 'هذا الحقل مطلوب',
             'life_cycle.required' => 'هذا الحقل مطلوب',
             'disease.required' => 'هذا الحقل مطلوب',
@@ -215,16 +213,17 @@ class ProductController extends Controller
             'section_one' => $request->section_one,
             'section_two' => $request->section_two,
             'section_there' => $request->section_there,
-            'packet'=> $request->packet,
-            'stock'=> $request->stock,
-            'seeds_one'=> $request->seeds_one,
-            'seeds_two'=> $request->seeds_two,
-            'seeds_there'=> $request->seeds_there,
-            'type'=> $request->type,
-            'code_prodcut'=> $request->code_prodcut,
+            'packet' => $request->packet,
+            'stock' => $request->stock,
+            'seeds_one' => $request->seeds_one,
+            'seeds_two' => $request->seeds_two,
+            'seeds_there' => $request->seeds_there,
+            'type' => $request->type,
+            'code_prodcut' => $request->code_prodcut,
+            'discount' => $request->discount,
+            'type_product' => $request->type_product,
 
         ]);
-
 
 
         if (isset($request->category_id)) {
@@ -234,7 +233,7 @@ class ProductController extends Controller
         }
 
         if ($file = $request->file('photo')) {
-            File::delete(public_path('admin/pictures/product'. $request->id . '/' . $request->oldfile));
+            File::delete(public_path('admin/pictures/product' . $request->id . '/' . $request->oldfile));
 
             $file_name = $file->getClientOriginalName();
             $file_name_Extension = $request->file('photo')->getClientOriginalExtension();
@@ -261,14 +260,14 @@ class ProductController extends Controller
     public function destroy(Request $request)
     {
 
-        if ($request->page_id == 3){
-            File::delete(public_path('admin/pictures/product/'. $request->id . '/' . $request->oldfile));
+        if ($request->page_id == 3) {
+            File::delete(public_path('admin/pictures/product/' . $request->id . '/' . $request->oldfile));
             Photo::where('id', $request->id_photos)->where('photoable_type', "App\Models\Product")->delete();
             toastr()->success('تم الحذف بنجاح');
             return redirect()->back();
-        }else{
+        } else {
             Product::destroy($request->id);
-            Photo::where('photoable_type','App\Models\Product')->whereIn('photoable_id',[$request->id])->delete();
+            Photo::where('photoable_type', 'App\Models\Product')->whereIn('photoable_id', [$request->id])->delete();
             toastr()->success('تم الحذف بنجاح');
             return redirect('product');
         }

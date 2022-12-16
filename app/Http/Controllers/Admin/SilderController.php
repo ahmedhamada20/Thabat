@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\File;
 
 class SilderController extends Controller
 {
-    
+
 
     function __construct()
     {
-         $this->middleware('permission:سليدر سليدر', ['only' => ['index']]);
-         $this->middleware('permission:اضافه سليدر', ['only' => ['create','store']]);
-         $this->middleware('permission:تعديل سليدر', ['only' => ['edit','update']]);
-         $this->middleware('permission:حذف سليدر', ['only' => ['destroy']]);
+        $this->middleware('permission:سليدر سليدر', ['only' => ['index']]);
+        $this->middleware('permission:اضافه سليدر', ['only' => ['create', 'store']]);
+        $this->middleware('permission:تعديل سليدر', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:حذف سليدر', ['only' => ['destroy']]);
     }
 
 
@@ -48,7 +48,7 @@ class SilderController extends Controller
         $request->validate([
             'name' => 'required',
             'photo' => 'required|image',
-        ],[
+        ], [
             'name.required' => 'هذا الحقل مطلوب',
             'photo.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب ان يكون صوره',
@@ -57,6 +57,8 @@ class SilderController extends Controller
         $data = Silder::create([
             'name' => $request->name,
             'notes' => $request->notes,
+            'price' => $request->price,
+            'discount' => $request->discount,
         ]);
         if ($file = $request->file('photo')) {
             $file_name = $file->getClientOriginalName();
@@ -98,7 +100,7 @@ class SilderController extends Controller
     public function edit($id)
     {
         $data = Silder::findorfail($id);
-        return  view('admin.silder.edit',['data'=>$data]);
+        return view('admin.silder.edit', ['data' => $data]);
     }
 
     /**
@@ -113,7 +115,7 @@ class SilderController extends Controller
         $request->validate([
             'name' => 'required',
             'photo' => 'image',
-        ],[
+        ], [
             'name.required' => 'هذا الحقل مطلوب',
             'photo.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب ان يكون صوره',
@@ -123,10 +125,12 @@ class SilderController extends Controller
         $data->update([
             'name' => $request->name,
             'notes' => $request->notes,
+            'price' => $request->price,
+            'discount' => $request->discount,
         ]);
 
         if ($file = $request->file('photo')) {
-            File::delete(public_path('admin/pictures/silder'.'/' . $request->id . '/' . $request->oldfile));
+            File::delete(public_path('admin/pictures/silder' . '/' . $request->id . '/' . $request->oldfile));
             $file_name = $file->getClientOriginalName();
             $file_name_Extension = $request->file('photo')->getClientOriginalExtension();
             $file_to_store = time() . '_' . explode('.', $file_name)[0] . '_.' . $file_name_Extension;

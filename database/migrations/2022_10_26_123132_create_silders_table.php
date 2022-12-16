@@ -17,6 +17,8 @@ class CreateSildersTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('notes')->nullable();
+            $table->string('price')->nullable();
+            $table->string('discount');
             $table->timestamps();
         });
     }

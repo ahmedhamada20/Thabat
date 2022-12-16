@@ -31,15 +31,18 @@ class CategorySeeder extends Seeder
 
         for ($i = 0; $i <= 2; $i++) {
             Silder::create([
-                'name' => $faker->name,
-                'notes' => $faker->name,
+
+                'name' => $faker->name(),
+                'notes' => $faker->paragraph(),
+                'price' => $faker->numberBetween(10,35),
+                'discount' => $faker->numberBetween(20,60),
             ]);
         }
 
         for ($i = 0; $i <= Silder::count(); $i++) {
             Photo::insert([
-                'Filename'     => rand(1,4) . ".jpg",
-                'photoable_id' => rand(1,4),
+                'Filename'     => rand(1,3) . '.jpg',
+                'photoable_id' => rand(1,3),
                 'photoable_type' => 'App\Models\Silder'
             ]);
         }
@@ -76,12 +79,13 @@ class CategorySeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i <= 80; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             Product::create([
                 'name' => $faker->name,
                 'notes' => $faker->paragraph,
-                'price'=> 25000,
-                'quantity'=> $faker->numberBetween(1000000,2000000),
+                'price'=> $faker->numberBetween(10,35),
+                'quantity'=> $faker->numberBetween(10,30),
+                'type_product'=> $faker->randomElement([1,0]),
                 'days'=>rand(100,600),
                 'life_cycle'=>$faker->name,
                 'disease'=>$faker->name,
@@ -89,6 +93,7 @@ class CategorySeeder extends Seeder
                 'section_one'=>$faker->paragraph,
                 'section_two'=>$faker->paragraph,
                 'section_there'=>$faker->paragraph,
+                'discount' => $faker->numberBetween(20,60),
             ]);
         }
 
@@ -100,10 +105,10 @@ class CategorySeeder extends Seeder
         });
 
 
-        for ($i = 0; $i <= 80; $i++) {
+        for ($i = 0; $i <= Product::count(); $i++) {
             Photo::insert([
-                'Filename'     => rand(1,9) . ".jpg",
-                'photoable_id' => rand(1,80),
+                'Filename'     => rand(1,7) . '.jpg',
+                'photoable_id' => rand(1,7),
                 'photoable_type' => 'App\Models\Product'
             ]);
         }

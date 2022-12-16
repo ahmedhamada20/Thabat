@@ -41,10 +41,11 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>صوره المنتج</th>
                             <th>اسم المنتج</th>
-                            {{-- <th>سعر المنتج</th> --}}
+                             <th>سعر المنتج</th>
                             <th>كيمه المنتج</th>
-                      
+
                             <th>العمليات</th>
                         </tr>
                         </thead>
@@ -54,8 +55,10 @@
                         @foreach($data as $row)
                             <tr>
                                 <td>{{$loop->index+1}}</td>
+                                <td> <a href="{{asset($row->image)}}" target="_blank"> <img src="{{asset($row->image)}}"
+                                                                                            width="75" height="75" alt=""></a></td>
                                 <td>{{$row->name}}</td>
-                                {{-- <td>{{$row->price}}</td> --}}
+                                 <td>{{$row->price}}</td>
                                 <td>{{$row->quantity}}</td>
                                 <td>
                                     @can('تعديل المنتج')
@@ -74,7 +77,6 @@
                                     @endcan
 
 
-                                <a href="{{ route('typeProduct.show',$row->id) }}" class="btn btn-dark btn-sm"><i class="fa fa-shopping-basket"></i></a>
                                 </td>
                                 @include('admin.product.deleted')
                             </tr>

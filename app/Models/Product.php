@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'price',
@@ -28,6 +29,8 @@ class Product extends Model
         'seeds_there',
         'type',
         'code_prodcut',
+        'discount',
+        'type_product',
     ];
 
     protected $appends = ['image'];

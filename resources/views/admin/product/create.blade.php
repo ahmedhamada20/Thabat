@@ -44,21 +44,14 @@
                             @enderror
                         </div>
 
-                        <div class="col">
-                            <label>رقم المنتج</label>
-                            <input type="text" name="code_prodcut" required class="form-control">
-                            @error('code_prodcut')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
 
-                        {{-- <div class="col">
+                       <div class="col">
                             <label>سعر المنتج</label>
                             <input type="number" name="price" required class="form-control">
                             @error('price')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
-                        </div> --}}
+                        </div>
 
 
                         <div class="col">
@@ -72,84 +65,19 @@
 
                     <br>
 
-{{-- 
                     <div class="row">
-                        <div class="col">
-                            <label>packet</label>
-                            <input type="number" name="packet" required class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>stock</label>
-                            <input type="number" name="stock" required class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>seeds_one</label>
-                            <input type="number" name="seeds_one" required class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>seeds_two</label>
-                            <input type="number" name="seeds_two" required class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>seeds_there</label>
-                            <input type="number" name="seeds_there" required class="form-control">
-                        </div>
-                    </div> --}}
-
-                    <br>
-
-                    <div class="row">
-                        <div class="col">
-                            <label>DAYS TO MATURITY</label>
-                            <input type="number" name="days" required class="form-control">
-                        </div>
 
                         <div class="col">
-                            <label>LIFE CYCLE</label>
-                            <input type="text" name="life_cycle" required class="form-control">
+                            <label>نسبه الخصم</label>
+                            <input type="number" name="discount" required class="form-control">
+
                         </div>
-
-                        <div class="col">
-                            <label>DISEASE RESISTANCE CODES </label>
-                            <input type="text" name="disease" required class="form-control">
-                        </div>
-
-                        <div class="col">
-                            <label>Hybrid status</label>
-                            <input type="text" name="hybrid" required class="form-control">
-                        </div>
-                    </div>
-
-                    <br>
-
-
-                    {{-- <div class="row">
-                        <div class="col">
-                            <label>Type</label>
-                            <select class="form-control" name="type" required>
-                                <option value="" disabled selected>-- Choose --</option>
-                                <option value="seeds">seeds</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="l">l</option>
-                                <option value="ml">ml</option>
-                                <option value="m">m</option>
-                                <option value="cm">cm</option>
-                                <option value="pcs">pcs</option>
-                                <option value="set">set</option>
-                                <option value="mlm">ملمتر</option>
-                            </select>
-                        </div>
-                    </div> --}}
-
-                    <br>
-
-                    <div class="row">
                         <div class="col">
                             <label>اسم الفئه</label>
-                            <select class="js-example-basic-multiple form-control" required name="category_id[]" multiple="multiple">
-                                    @foreach(App\Models\Category::all() as $row)
-                                <option value="{{$row->id}}">{{$row->name}}</option>
+                            <select class="js-example-basic-multiple form-control" required name="category_id[]" multiple>
+
+                                @foreach(App\Models\Category::all() as $row)
+                                    <option value="{{$row->id}}">{{$row->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -159,58 +87,33 @@
 
                     <div class="row">
                         <div class="col">
+                            <label>نوع المنتج</label>
+                            <select name="type_product" id="" class="form-control p-1" required>
+                                <option value="" disabled selected>-- اختر من القائمه --</option>
+                                <option value="0">منتج عادي</option>
+                                <option value="1">منتج جديد</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
                             <label>Notes</label>
                             <textarea class="form-control" name="notes" rows="5"></textarea>
                         </div>
                     </div>
 
-                    <br>
-
-                    
-                    <div class="row">
-                        <div class="col">
-                            <label>Shipping Information</label>
-                            <textarea class="form-control" name="section_one" rows="5"></textarea>
-                        </div>
-                    </div>
-                    
-                    <br>
-
-                    
-                    <div class="row">
-                        <div class="col">
-                            <label> Growing Information</label>
-                            <textarea class="form-control" name="section_two" rows="5"></textarea>
-                        </div>
-                    </div>
-                    <br>
-
-                    
-                    <div class="row">
-                        <div class="col">
-                            <label> Satisfaction Guarantee</label>
-                            <textarea class="form-control" name="section_there" rows="5"></textarea>
-                        </div>
-                    </div>
-
 
                     <br>
 
                     <div class="row">
                         <div class="col">
-                            <label>QUICK FACTS</label>
+                            <p class="text-danger">يجب ان يكون مقاس الصوره 300 * 300</p>
+                            <label>صوره المنتج</label>
                             <input type="file" name="photo" required accept="image/*">
                         </div>
                     </div>
-                    <br>
 
-                    <div class="row">
-                        <div class="col">
-                            <label>صور المنتج</label>
-                            <input type="file" name="FilenameMany[]" multiple accept="image/*">
-                            <p class="text-danger">مقاس الصور 1440 * 500</p>
-                        </div>
-                    </div>
 
                     <br>
 

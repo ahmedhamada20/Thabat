@@ -15,7 +15,13 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
+            $table->string('quantity')->default(1);
+            $table->text('notes')->nullable();
+            $table->decimal('price',8,2)->nullable();
+            $table->string('discount')->nullable();
+            $table->string('type_product')->nullable();
+
             $table->string('days')->nullable();
             $table->string('life_cycle')->nullable();
             $table->string('disease')->nullable();
@@ -23,9 +29,8 @@ class CreateProductsTable extends Migration
             $table->longText('section_one')->nullable();
             $table->longText('section_two')->nullable();
             $table->longText('section_there')->nullable();
-            $table->decimal('price',8,2);
-            $table->string('quantity')->default(1);
-            $table->text('notes')->nullable();
+
+
             $table->timestamps();
         });
     }

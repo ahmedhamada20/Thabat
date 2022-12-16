@@ -26,7 +26,7 @@
     <!-- end page title -->
 
     <div class="row">
-        <div class="col-xl-4 col-md-6">
+        <div class="col-xl-4 col-md-6"  style="color: #8a6d3b !important;">
             <div class="card bg-primary mini-stat text-white">
                 <div class="p-3 mini-stat-desc">
                     <div class="clearfix">
@@ -94,7 +94,7 @@
                     </div>
                 </a>
                 </div>
-              
+
             </div>
         </div>
 
@@ -108,11 +108,11 @@
                     </div>
                 </a>
                 </div>
-            
+
             </div>
         </div>
 
-        
+
         <div class="col-xl-3 col-md-6">
             <div class="card bg-pink mini-stat text-white">
                 <div class="p-3 mini-stat-desc">
@@ -123,7 +123,7 @@
                     </div>
                 </a>
                 </div>
-               
+
             </div>
         </div>
 
@@ -158,7 +158,7 @@
                 <div id='calendar'></div>
             </div>
         {{-- </div> --}}
-        
+
     </div>
 @endsection
 

@@ -16,7 +16,7 @@
                     <div class="breadcrumb-trail breadcrumbs">
                         <ul class="trail-items breadcrumb">
                             <li class="trail-item trail-begin">
-                                <a href="{{route('home')}}">الرئيسية</a>
+                                <a href="{{route('website')}}">الرئيسية</a>
                             </li>
                             <li class="trail-item trail-end active">
                                 المتجر
@@ -50,6 +50,7 @@
                             </form>
                         </div>
                         <ul class="row list-products auto-clear equal-container product-grid">
+                            @foreach(App\Models\Product::get()->take(8) as $row)
                             <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
                                 <div class="product-inner equal-element" style="height: auto;">
                                     <div class="product-top">
@@ -63,454 +64,47 @@
                                     </div>
                                     <div class="product-thumb">
                                         <div class="thumb-inner">
-                                            <a href="{{route('productDetails')}}">
-                                                <img src="{{asset('website/assets/product_images/product-item-1.jpg')}}"
+                                            <a href="{{route('productDetails',$row->id)}}">
+                                                <img src="{{asset($row->image)}}"
                                                      alt="img">
                                             </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Blanche Parfum</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    AED 65
-                                                </del>
-                                                <ins>
-                                                    AED 45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
 
-                            <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element" style="height: auto;">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                        <span class="onnew">
-                                            <span class="text">
-                                                جديد
-                                            </span>
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="{{route('productDetails')}}">
-                                                <img src="{{asset('website/assets/product_images/product-item-2.jpg')}}"
-                                                     alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="product-info">
                                         <h5 class="product-name product_title">
-                                            <a href="#">Blanche Parfum</a>
+                                            <a href="{{route('productDetails',$row->id)}}">{{$row->name}}</a>
                                         </h5>
                                         <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
+
                                             <div class="price">
                                                 <del>
-                                                    AED 65
+
+                                                    AED {{$row->discount}}
+
                                                 </del>
                                                 <ins>
-                                                    AED 45
+                                                    AED {{$row->price}}
                                                 </ins>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element" style="height: auto;">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                        <span class="onnew">
-                                            <span class="text">
-                                                جديد
-                                            </span>
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="{{route('productDetails')}}">
-                                                <img src="{{asset('website/assets/product_images/product-item-3.jpg')}}"
-                                                     alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Blanche Parfum</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    AED 65
-                                                </del>
-                                                <ins>
-                                                    AED 45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element" style="height: auto;">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                        <span class="onnew">
-                                            <span class="text">
-                                                جديد
-                                            </span>
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="{{route('productDetails')}}">
-                                                <img src="{{asset('website/assets/product_images/product-item-4.jpg')}}"
-                                                     alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Blanche Parfum</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    AED 65
-                                                </del>
-                                                <ins>
-                                                    AED 45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element" style="height: auto;">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                        <span class="onnew">
-                                            <span class="text">
-                                                جديد
-                                            </span>
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="{{route('productDetails')}}">
-                                                <img src="{{asset('website/assets/product_images/product-item-5.jpg')}}"
-                                                     alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Blanche Parfum</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    AED 65
-                                                </del>
-                                                <ins>
-                                                    AED 45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element" style="height: auto;">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                        <span class="onnew">
-                                            <span class="text">
-                                                جديد
-                                            </span>
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="{{route('productDetails')}}">
-                                                <img src="{{asset('website/assets/product_images/product-item-6.jpg')}}"
-                                                     alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Blanche Parfum</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    AED 65
-                                                </del>
-                                                <ins>
-                                                    AED 45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element" style="height: auto;">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                        <span class="onnew">
-                                            <span class="text">
-                                                جديد
-                                            </span>
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="{{route('productDetails')}}">
-                                                <img src="{{asset('website/assets/product_images/product-item-7.jpg')}}"
-                                                     alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Blanche Parfum</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    AED 65
-                                                </del>
-                                                <ins>
-                                                    AED 45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element" style="height: auto;">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                        <span class="onnew">
-                                            <span class="text">
-                                                جديد
-                                            </span>
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="{{route('productDetails')}}">
-                                                <img src="{{asset('website/assets/product_images/product-item-8.jpg')}}"
-                                                     alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Blanche Parfum</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    AED 65
-                                                </del>
-                                                <ins>
-                                                    AED 45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            @endforeach
+
                         </ul>
-                        <div class="pagination clearfix style3">
-                            <div class="nav-link">
-                                <a href="#" class="page-numbers"><i class="icon fa fa-angle-left"
-                                                                    aria-hidden="true"></i></a>
-                                <a href="#" class="page-numbers">1</a>
-                                <a href="#" class="page-numbers">2</a>
-                                <a href="#" class="page-numbers current">3</a>
-                                <a href="#" class="page-numbers"><i class="icon fa fa-angle-right"
-                                                                    aria-hidden="true"></i></a>
-                            </div>
-                        </div>
+{{--                        <div class="pagination clearfix style3">--}}
+{{--                            <div class="nav-link">--}}
+{{--                                <a href="#" class="page-numbers"><i class="icon fa fa-angle-left"--}}
+{{--                                                                    aria-hidden="true"></i></a>--}}
+{{--                                <a href="#" class="page-numbers">1</a>--}}
+{{--                                <a href="#" class="page-numbers">2</a>--}}
+{{--                                <a href="#" class="page-numbers current">3</a>--}}
+{{--                                <a href="#" class="page-numbers"><i class="icon fa fa-angle-right"--}}
+{{--                                                                    aria-hidden="true"></i></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -630,25 +224,25 @@
                                 </ul>
                             </div> -->
 
-                            <div class="widget widget-tags">
-                                <h3 class="widgettitle">
-                                    تاق
-                                </h3>
-                                <ul class="tagcloud">
-                                    <li class="tag-cloud-link">
-                                        <a href="#">مكتب</a>
-                                    </li>
-                                    <li class="tag-cloud-link">
-                                        <a href="#">المزهرة</a>
-                                    </li>
-                                    <li class="tag-cloud-link active">
-                                        <a href="#">اكسسوارات</a>
-                                    </li>
-                                    <li class="tag-cloud-link">
-                                        <a href="#">تناول الطعام</a>
-                                    </li>
-                                </ul>
-                            </div>
+{{--                            <div class="widget widget-tags">--}}
+{{--                                <h3 class="widgettitle">--}}
+{{--                                    تاق--}}
+{{--                                </h3>--}}
+{{--                                <ul class="tagcloud">--}}
+{{--                                    <li class="tag-cloud-link">--}}
+{{--                                        <a href="#">مكتب</a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="tag-cloud-link">--}}
+{{--                                        <a href="#">المزهرة</a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="tag-cloud-link active">--}}
+{{--                                        <a href="#">اكسسوارات</a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="tag-cloud-link">--}}
+{{--                                        <a href="#">تناول الطعام</a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>

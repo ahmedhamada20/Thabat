@@ -9,6 +9,15 @@
 @endsection
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <!-- Start page title -->
     <div class="row">
         <div class="col-sm-12">
@@ -50,20 +59,12 @@
 
 
                             <div class="col">
-                                <label>رقم المنتج</label>
-                                <input type="text" name="code_prodcut" value="{{$data->code_prodcut}}" class="form-control">
-                                @error('code_prodcut')
-                                <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-
-                            {{-- <div class="col">
                                 <label>سعر المنتج</label>
                                 <input type="number" name="price" value="{{$data->price}}" class="form-control">
                                 @error('price')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
-                            </div> --}}
+                            </div>
 
 
                             <div class="col">
@@ -79,88 +80,40 @@
                         <br>
 
 
-                    {{-- <div class="row">
-                        <div class="col">
-                            <label>packet</label>
-                            <input type="number" name="packet" value="{{ $data->packet }}" class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>stock</label>
-                            <input type="number" name="stock" value="{{ $data->stock }}" class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>seeds_one</label>
-                            <input type="number" name="seeds_one" value="{{ $data->seeds_one }}" class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>seeds_two</label>
-                            <input type="number" name="seeds_two" value="{{ $data->seeds_two }}" class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>seeds_there</label>
-                            <input type="number" name="seeds_there" value="{{ $data->seeds_there }}" class="form-control">
-                        </div>
-                    </div> --}}
-
-                        <br>
-
-                       
-
-                        <div class="row">
-                            <div class="col">
-                                <label>DAYS TO MATURITY</label>
-                                <input type="number" name="days" value="{{ $data->days }}" class="form-control">
-                            </div>
-    
-                            <div class="col">
-                                <label>LIFE CYCLE</label>
-                                <input type="text" name="life_cycle" value="{{ $data->life_cycle }}" class="form-control">
-                            </div>
-    
-                            <div class="col">
-                                <label>DISEASE RESISTANCE CODES </label>
-                                <input type="text" name="disease" value="{{ $data->disease }}" class="form-control">
-                            </div>
-    
-                            <div class="col">
-                                <label>Hybrid status</label>
-                                <input type="text" name="hybrid" value="{{ $data->hybrid }}" class="form-control">
-                            </div>
-                        </div>
-                        <br>
-
-{{-- 
-                        <div class="row">
-                            <div class="col">
-                                <label>Type</label>
-                                <select class="form-control" name="type" >
-                                    <option value="seeds" {{ $data->type == "seeds" ? 'selected' : null }}>seeds</option>
-                                    <option value="g" {{ $data->type == "g" ? 'selected' : null }}>g</option>
-                                    <option value="kg" {{ $data->type == "kg" ? 'selected' : null }}>kg</option>
-                                    <option value="l" {{ $data->type == "l" ? 'selected' : null }}>l</option>
-                                    <option value="ml" {{ $data->type == "ml" ? 'selected' : null }}>ml</option>
-                                    <option value="m" {{ $data->type == "m" ? 'selected' : null }}>m</option>
-                                    <option value="cm" {{ $data->type == "cm" ? 'selected' : null }}>cm</option>
-                                    <option value="pcs" {{ $data->type == "pcs" ? 'selected' : null }}>pcs</option>
-                                    <option value="set" {{ $data->type == "set" ? 'selected' : null }}>set</option>
-                                    <option value="mlm" {{ $data->type == "mlm" ? 'selected' : null }}>ملمتر</option>
-                                </select>
-                            </div>
-                        </div> --}}
-
                         <br>
                         <div class="row">
+
+
+                            <div class="col">
+                                <label>نسبه الخصم</label>
+                                <input type="number" name="discount" value="{{$data->discount}}" class="form-control">
+
+                            </div>
+
                             <div class="col">
                                 <label>اسم الفئه</label>
                                 <select class="js-example-basic-multiple form-control" required name="category_id[]" multiple>
-                                
+
                                     @foreach(App\Models\Category::all() as $row)
-                                        <option value="{{$row->id}}" 
+                                        <option value="{{$row->id}}"
                                             @foreach($data->categoryProdut as $dd) {{$dd->id == $row->id ? 'selected' : ''}} @endforeach
-                                            
-                                            
+
+
                                             >{{$row->name}}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col">
+                                <label>نوع المنتج</label>
+                                <select name="type_product" id="" class="form-control p-1" required>
+                                    <option value="" disabled selected>-- اختر من القائمه --</option>
+                                    <option value="0" {{$data->type_product == 0 ? 'selected' : null}}>منتج عادي</option>
+                                    <option value="1" {{$data->type_product == 1 ? 'selected' : null}}>منتج جديد</option>
                                 </select>
                             </div>
                         </div>
@@ -175,53 +128,20 @@
                                 </textarea>
                             </div>
                         </div>
+
+
                         <br>
+
+                        @if($data->image)
+                            <a href="{{asset($data->image)}}" target="_blank">  <img src="{{asset($data->image)}}" width="75" height="75" alt=""></a>
+                            <input type="hidden" name="oldfile" value="{{$data->photo->Filename}}">
+                        @endif
+
                         <div class="row">
                             <div class="col">
-                                <label>Shipping Information</label>
-                                <textarea class="form-control" name="section_one" rows="5">
-                                    {{$data->section_one}}
-                                </textarea>
-                            </div>
-                        </div>
-                        
-                        <br>
-    
-                        
-                        <div class="row">
-                            <div class="col">
-                                <label> Growing Information</label>
-                                <textarea class="form-control" name="section_two" rows="5">
-                                    {{$data->section_two}}
-                                </textarea>
-                            </div>
-                        </div>
-                        <br>
-    
-                        
-                        <div class="row">
-                            <div class="col">
-                                <label> Satisfaction Guarantee</label>
-                                <textarea class="form-control" name="section_there" rows="5">
-                                    {{$data->section_there}}
-                                </textarea>
-                            </div>
-                        </div>
-    
-    
-                        <br>
-    
-                        <div class="row">
-                            <div class="col">
-                                <label>QUICK FACTS</label>
-                                @if($data->photo->Filename ?? '')
-                                <a href="{{asset('admin/pictures/product/'.$data->id.'/'.$data->photo->Filename)}}" target="_blank"> <img src="{{asset($data->image)}}" width="100px" height="100px" alt=""></a>
-                                <input type="hidden" name="oldfile" value="{{$data->photo->Filename}}">
-                            @endif
-                            </div>
-                            <div class="col">
-                                <label>QUICK FACTS</label>
-                                <input type="file" name="photo" accept="image/*">
+                                <p class="text-danger">يجب ان يكون مقاس الصوره 300 * 300</p>
+                                <label>صوره المنتج</label>
+                                <input type="file" name="photo" accept="image/*" >
                             </div>
                         </div>
 
@@ -244,7 +164,7 @@
 @endsection
 
 @section('js')
-  
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

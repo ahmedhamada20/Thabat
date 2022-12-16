@@ -51,6 +51,20 @@
 
                         <div class="row">
                             <div class="col">
+                                <label>السعر</label>
+                                <input type="number" name="price" value="{{$data->price}}" class="form-control">
+                            </div>
+
+
+                            <div class="col">
+                                <label>نسبه الخصم</label>
+                                    <input type="number" name="discount" value="{{$data->discount}}" class="form-control">
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
                                 <label>ملاحظات</label>
                                 <textarea class="form-control" rows="5" name="notes">
                                     {{$data->notes}}
@@ -67,6 +81,7 @@
 
                         <div class="row">
                             <div class="col">
+                                <p class="text-danger">يجب ان يكون مقاس الصوره 550 * 1920</p>
                                 <label>صوره السليدر</label>
                                 <input type="file" name="photo" accept="image/*" >
                             </div>

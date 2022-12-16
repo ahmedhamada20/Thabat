@@ -11,6 +11,8 @@ class Silder extends Model
     protected $fillable = [
         'name',
         'notes',
+        'price',
+        'discount',
     ];
 
     protected $appends = ['image'];

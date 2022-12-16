@@ -49,6 +49,22 @@
 
                         <div class="row">
                             <div class="col">
+                                <label>السعر</label>
+                                <input type="number" name="price" required class="form-control">
+                            </div>
+
+
+                              <div class="col">
+                                <label>نسبه الخصم</label>
+                                <input type="number" name="discount" required class="form-control">
+
+                              </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
                                 <label>ملاحظات</label>
                                 <textarea class="form-control" rows="5" name="notes"></textarea>
                             </div>
@@ -58,6 +74,7 @@
 
                         <div class="row">
                             <div class="col">
+                                <p class="text-danger">يجب ان يكون مقاس الصوره 550 * 1920</p>
                                 <label>صوره السليدر</label>
                                 <input type="file" name="photo" accept="image/*" >
                             </div>

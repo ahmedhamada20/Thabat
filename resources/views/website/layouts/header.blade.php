@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 col-md-4 col-xs-5 col-ts-12">
                     <div class="logo">
-                        <a href="{{route('home')}}">
+                        <a href="{{route('website')}}">
                             <img src="{{asset('website/assets/images/logo.png')}}" width="30%" alt="logo">
                         </a>
                     </div>
@@ -46,19 +46,19 @@
                             <a href="javascript:void(0);" class="shopcart-icon" data-stelina="stelina-dropdown">
                                 السلة
                                 <span class="count">
-                                        0
+                                        {{ Cart::count() }}
                                     </span>
                             </a>
                             <div class="no-product stelina-submenu">
                                 <p class="text">
                                     لديك
                                     <span>
-                                            0 منتج
+                                            {{ Cart::count() }} منتج
                                         </span>
                                     في حقيبتك
                                 </p>
                                 <hr>
-                                <a href="shoppingcart.html">اذهب لسلة التسوق</a>
+                                <a href="{{route('shoppingCart')}}">اذهب لسلة التسوق</a>
                             </div>
                         </div>
                         <a class="menu-bar mobile-navigation menu-toggle" href="#">
@@ -78,7 +78,7 @@
                     <div class="container-wapper">
                         <ul class="stelina-clone-mobile-menu stelina-nav main-menu " id="menu-main-menu" dir="rtl">
                             <li class="menu-item">
-                                <a href="{{route('home')}}" title="home">الرئيسية</a>
+                                <a href="{{route('website')}}" title="home">الرئيسية</a>
                             </li>
                             <li class="menu-item">
                                 <a href="{{route('shop')}}" title="shop">المتجر</a>
