@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -75,5 +79,33 @@ class HomeController extends Controller
     {
         $cart = Cart::content();
         return view('website.checkout',compact('cart'));
+    }
+
+
+    public function order_paymaents(Request $request)
+    {
+
+        $order = Order::create([
+            'user_id' => auth()->user()->id,
+            'total' => Cart::subtotal(),
+            'quantity' => 1,
+            'status' => Order::ORDERCOMPTITED,
+            'code' => 'ORD-' . Str::random(15),
+        ]);
+
+        foreach (Cart::content() as $item) {
+            DB::table('order_product')->insert([
+                'product_id' => $item->id,
+                'order_id' => $order->id,
+            ]);
+        }
+
+
+        Mail::to('hamada2031995@gmail.com')->send(new \App\Mail\MyTestMail($order));
+
+        session()->forget('coupon');
+        Cart::destroy();
+        toastr()->success('لقد تم تنفيذ طلبكم بنجاح');
+        return redirect()->back();
     }
 }

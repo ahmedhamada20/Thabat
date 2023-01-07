@@ -27,19 +27,19 @@ class Order extends Model
     {
         switch ($this->status) {
             case 0:
-                $result = 'new Order';
+                $result = '<span class="badge badge-primary">طلب جديد</span>';
                 break;
             case 1:
-                $result = 'Completed order';
+                $result = '<span class="badge badge-success">طلب مكتمل</span>';
                 break;
             case 2:
-                $result = 'cansel order';
+                $result = '<span class="badge badge-danger">طلب مرفوض</span>';
                 break;
             case 3:
-                $result = "assgin Order";
+                $result = '<span class="badge badge-warning">تم تعين الطلب</span>';
                 break;
             case 4:
-                $result = "assgin Refund";
+                $result = '<span class="badge badge-info">تم استرجاع الطلب</span>';
                 break;
         }
 

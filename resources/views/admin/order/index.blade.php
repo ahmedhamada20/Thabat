@@ -28,7 +28,7 @@
 <div class="row">
     <div class="col">
         <div class="card m-b-30">
-          
+
             <div class="card-body">
 
                 <table id="datatable" class="table table-bordered dt-responsive nowrap"
@@ -52,11 +52,11 @@
                         @foreach($data as $row)
                         <tr>
                             <td>{{$loop->index+1}}</td>
-                           
+
                             <td>{{$row->code}}</td>
                             <td>{{$row->user->name}}</td>
                             <td>{{$row->total}}</td>
-                            <td>{{$row->status()}}</td>
+                            <td>{!!$row->status()!!}</td>
                             <td>{{$row->assgin->user->name ?? 'لا يوجد تعين حتي الان '}}</td>
                             <td>
 
@@ -70,7 +70,7 @@
                                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#assgin{{ $row->id }}"> <i class="fa fa-eye text-info"></i>  تعين الطلب</a>
                                     </div>
                                   </div>
-{{-- 
+{{--
                                 <button data-toggle="modal" data-target="#exampleModal{{ $row->id }}" class="btn btn-success btn-sm"><i
                                         class="fa fa-edit"></i></button> --}}
                             </td>
